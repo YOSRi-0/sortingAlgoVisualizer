@@ -17,6 +17,7 @@ let elementWidth = calculateElementWidth();
 
 delayElement.oninput = () => {
     delay = 1000 - delayElement.value
+    console.log(delay)
 }
 
 sizeElement.oninput = () => {
@@ -66,14 +67,14 @@ async function bubbleSort () {
             if (sizeHasChanged) return;
             if (stats === 1) await pauser();
             changeTwoElementColor(arrayOfObject[j], arrayOfObject[j+1], '#0081a7')
-            if (stats === 1) await pauser();
             await pause(delay)
+            if (stats === 1) await pauser();
            if (arrayToSort[j] > arrayToSort[j+1]) {
                 changeTwoElementColor(arrayOfObject[j], arrayOfObject[j+1], '#95b27b')
                 if (stats === 1) await pauser();
                 translateTwoElement(arrayOfObject[j], arrayOfObject[j+1])
-                if (stats === 1) await pauser();
                 await pause(delay)
+                if (stats === 1) await pauser();
                 swap(arrayOfObject, j, j+1);
                 swap(arrayToSort, j, j+1)
                 swapped = true;
@@ -96,8 +97,12 @@ function createArrayOfObject(elements) {
 }
 
 function changeTwoElementColor(firstElement, secondElement, color) {
-    firstElement.element.style.backgroundColor = color;
-    secondElement.element.style.backgroundColor = color;
+    if (firstElement !== null) {
+        firstElement.element.style.backgroundColor = color;
+    }
+    if (secondElement !== null) {
+        secondElement.element.style.backgroundColor = color;
+    }
 }
 
 function translateTwoElement(firstElement, secondElement) {
@@ -140,4 +145,7 @@ refreshButton.addEventListener('click',() => {
 bubbleSortButton.addEventListener('click', bubbleSort);
 window.addEventListener('load', (event) => {
     generateArray(arrayLen);
+//     console.log(arrayToSort);
+// selectionSort()
+// console.log(arrayToSort);
 })
