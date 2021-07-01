@@ -43,7 +43,6 @@ async function selectionSort() {
             if (stats === 1) await pauser();
             // await pause(delay)
     }
-    console.log(arrayToSort)
 }
 
 function translateTwoElementSelection(firstElement, secondElement, distance) {

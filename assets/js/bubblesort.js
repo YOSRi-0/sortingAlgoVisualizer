@@ -120,11 +120,6 @@ function swap (arr, i, j) {
     arr[j] = temp;
 }
 
-
-
-
-
-
 const pause = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 function pauser() {
     return new Promise(resolve => {
