@@ -17,7 +17,6 @@ let elementWidth = calculateElementWidth();
 
 delayElement.oninput = () => {
     delay = 1000 - delayElement.value
-    console.log(delay)
 }
 
 sizeElement.oninput = () => {
