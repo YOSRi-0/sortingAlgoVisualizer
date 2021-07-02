@@ -5,7 +5,6 @@ async function insertionSort() {
     const elements = document.querySelectorAll('.array-element');
     const arrayOfObject = createArrayOfObject(elements);
     for (let i=1; i < arrayToSort.length; i++) {
-        sizeHasChanged = false;
         let currentValue = arrayToSort[i];
         let currentElement = arrayOfObject[i];
         changeTwoElementColor(currentElement, null, '#95b27b');
@@ -27,8 +26,6 @@ async function insertionSort() {
 
         changeTwoElementColor(currentElement, null, '#ee6c4d')
         if (stats === 1) await pauser();
-
-
     }
 }
 insertionButton.addEventListener('click', insertionSort)

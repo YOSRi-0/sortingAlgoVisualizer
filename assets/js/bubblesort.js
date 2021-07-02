@@ -30,6 +30,8 @@ function resetSettings() {
     arrayToSort = [];
     visualizer.innerHTML = '';
     stats = 0;
+    sizeHasChanged = true;
+
 }
 
 function calculateElementWidth () {
@@ -51,6 +53,7 @@ function createArrayElement(val) {
     arrayElement.className = 'array-element';
     arrayElement.style.height = val + '%';
     arrayElement.style.width = elementWidth + 'px';
+    // arrayElement.innerText = val
     visualizer.appendChild(arrayElement);
 }
 
@@ -60,9 +63,10 @@ async function bubbleSort () {
     sizeHasChanged = false;
     const elements = document.querySelectorAll('.array-element');
     const arrayOfObject = createArrayOfObject(elements);
+    let innerLoopLength = arrayOfObject.length;
     for (let i=0; i<arrayOfObject.length; i++) {
         swapped = false;
-        for (let j=0; j<arrayOfObject.length-1; j++) {
+        for (let j=0; j<innerLoopLength - 1; j++) {
             if (sizeHasChanged) return;
             if (stats === 1) await pauser();
             changeTwoElementColor(arrayOfObject[j], arrayOfObject[j+1], '#0081a7')
@@ -83,13 +87,14 @@ async function bubbleSort () {
            if (stats === 1) await pauser();
         }
         if (!swapped) return;
+        innerLoopLength--;
     }
 }
 
 function createArrayOfObject(elements) {
     const arrayOfObject = [];
-    for (let i=0; i<elements.length; i++) {
-        const object = {'element': elements[i], 'translateValue': 0}
+    for (let i=0; i < elements.length; i++) {
+        const object = {'element': elements[i], 'translateValue': 0, 'value' : arrayToSort[i]}
         arrayOfObject.push(object);
     }
     return arrayOfObject;
