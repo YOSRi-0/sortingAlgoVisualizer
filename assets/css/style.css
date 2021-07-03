@@ -46,7 +46,8 @@ body {
 .algo-buttons {
   width: 720px;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  flex-flow: wrap;
   margin-bottom: 2.5em;
   gap: 50px;
 }
@@ -126,7 +127,7 @@ svg {
 }
 .btn-algo {
   font-size: 1.3rem;
-  padding: 1em 1.5em;
+  /* padding: 1em 1.5em; */
   font-weight: 500;
   color: #3d5a80;
   border: 1px solid #fff8ed;
@@ -136,6 +137,8 @@ svg {
   letter-spacing: 1px;
   border-radius: 10px;
   transition: all 0.2s;
+  width: 206px;
+  height: 70px;
 }
 .btn-algo:hover,
 .btn-algo:focus {
