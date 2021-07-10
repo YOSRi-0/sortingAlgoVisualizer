@@ -4,7 +4,7 @@ const visualizer = document.querySelector('.visualizer');
 const playButton = document.querySelector('.play');
 const pauseButton = document.querySelector('.pause');
 const refreshButton = document.querySelector('.refresh');
-const totalWidth = 720;
+let totalWidth = 720;
 let arrayToSort = [];
 let delay = 500;
 let arrayLen = 50;
@@ -13,6 +13,28 @@ let stats = 0;
 delayElement.value = 1000 - delay;
 sizeElement.value = arrayLen;
 let elementWidth = calculateElementWidth();
+
+
+function GetElementWidth() {
+    console.log(window.innerWidth)
+    if (window.innerWidth > 740) {
+        totalWidth = 720;
+        elementWidth = calculateElementWidth();
+        generateArray(arrayLen);
+    }
+    else if (window.innerWidth <= 550) {
+        totalWidth = 320;
+        elementWidth = calculateElementWidth();
+        generateArray(arrayLen);
+    }
+    else if (window.innerWidth <= 740) {
+        totalWidth = 500;
+        elementWidth = calculateElementWidth();
+        generateArray(arrayLen);
+    }
+}
+
+window.addEventListener('resize', GetElementWidth);
 
 delayElement.oninput = () => {
     delay = 1000 - delayElement.value
