@@ -69,9 +69,11 @@ function generateArray(len) {
 }
 
 function createArrayElement(val) {
-    visualizer.style.gap = elementWidth + 'px';
+    // visualizer.style.gap = elementWidth + 'px';
     const arrayElement = document.createElement('div');
     arrayElement.className = 'array-element';
+    arrayElement.style.marginLeft = (elementWidth/2)+ 'px';
+    arrayElement.style.marginRight = (elementWidth/2) + 'px';
     arrayElement.style.height = val + '%';
     arrayElement.style.width = elementWidth + 'px';
     // arrayElement.innerText = val
