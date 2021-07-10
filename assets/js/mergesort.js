@@ -64,14 +64,4 @@ function mergeHelper() {
 const mergeButton = document.querySelector('.Merge');
 mergeButton.addEventListener('click', mergeHelper)
 
-function translateHelper (element, firstIndex, lastIndex) {
-    element.translateValue += elementWidth * 2 * (firstIndex - lastIndex);
-    const x = element.translateValue;
-    element.element.style.transform = `translateX(${x}px)`;
-}
 
-function changeColorHelper(arr, color) {
-    for (let i = 0; i < arr.length ; i++) {
-        arr[i].element.style.backgroundColor = "#" + color;
-    }
-}

@@ -45,19 +45,9 @@ async function quickSort(arr, left = 0, right = arr.length -1){
 function quickSortHelper() {
     const elements = document.querySelectorAll('.array-element');
     const arrayOfObject = createArrayOfObject(elements);
-    console.log(showArray(arrayOfObject))   
     quickSort(arrayOfObject);
-    console.log(showArray(arrayOfObject))
 
 }
 
 const quickButton = document.querySelector('.quick');
 quickButton.addEventListener('click', quickSortHelper)
-
-function showArray (arr) {
-    const array = [];
-    for (let a of arr) {
-        array.push(a.value);
-    }
-    return array;
-}

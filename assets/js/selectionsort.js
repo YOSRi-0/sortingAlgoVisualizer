@@ -45,14 +45,6 @@ async function selectionSort() {
     }
 }
 
-function translateTwoElementSelection(firstElement, secondElement, distance) {
-    firstElement.translateValue = firstElement.translateValue + (elementWidth*2) * distance;
-    secondElement.translateValue = secondElement.translateValue - (elementWidth*2) * distance;
-    const x = firstElement.translateValue;
-    const y = secondElement.translateValue;
-    firstElement.element.style.transform = `translate(${x}px)`
-    secondElement.element.style.transform = `translate(${y}px)`
 
-}
 
 selectionButton.addEventListener('click', selectionSort)
