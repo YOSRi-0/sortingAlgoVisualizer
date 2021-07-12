@@ -21,6 +21,11 @@ function GetElementWidth() {
         totalWidth = 720;
         elementWidth = calculateElementWidth();
         generateArray(arrayLen);
+    } 
+    else if (window.innerWidth <= 340) {
+        totalWidth = 200;
+        elementWidth = calculateElementWidth();
+        generateArray(arrayLen);
     }
     else if (window.innerWidth <= 550) {
         totalWidth = 320;
@@ -154,6 +159,7 @@ function changeColorHelper(arr, color) {
 }
 
 window.addEventListener('load', (event) => {
+    GetElementWidth();
     generateArray(arrayLen);
 //     console.log(arrayToSort);
 // selectionSort()
