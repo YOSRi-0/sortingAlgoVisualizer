@@ -47,4 +47,21 @@ async function selectionSort() {
 
 
 
-selectionButton.addEventListener('click', selectionSort)
+
+selectionButton.addEventListener("click", async function () {
+  const attr = document.createAttribute("highlight");
+  disableButtons(true);
+  addClickedAttribute(selectionButton, attr);
+  await selectionSort();
+  disableButtons(false);
+  removeClickedAttribute(selectionButton, attr);
+});
+
+function addClickedAttribute(button, attr) {
+  attr.value = "clicked";
+  button.setAttributeNode(attr);
+}
+
+function removeClickedAttribute(button, attr) {
+  button.removeAttributeNode(attr);
+}

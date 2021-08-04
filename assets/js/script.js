@@ -165,3 +165,11 @@ window.addEventListener('load', (event) => {
 // selectionSort()
 // console.log(arrayToSort);
 })
+
+const getButtons = document.querySelectorAll('.btn-algo');
+
+function disableButtons( isDisabled ) {
+    for (let button of getButtons) {
+        button.disabled = isDisabled;
+    }
+}

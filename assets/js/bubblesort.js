@@ -36,4 +36,20 @@ async function bubbleSort () {
 }
 
 
-bubbleSortButton.addEventListener('click', bubbleSort);
+bubbleSortButton.addEventListener('click',async function(){
+    const attr = document.createAttribute('highlight');
+    disableButtons(true);
+    addClickedAttribute(bubbleSortButton, attr);
+    await bubbleSort();
+    disableButtons(false);
+    removeClickedAttribute(bubbleSortButton, attr)
+} );
+
+function addClickedAttribute(button, attr) {
+    attr.value = 'clicked';
+    button.setAttributeNode(attr);
+}
+
+function removeClickedAttribute(button, attr) {
+    button.removeAttributeNode(attr)
+}

@@ -1,3 +1,5 @@
+const quickButton = document.querySelector('.quick');
+
 async function pivotHelper (array, start = 0, end = array.length - 1) {
     let pivot = array[start];
     let pivotIndex = start;
@@ -35,19 +37,38 @@ async function quickSort(arr, left = 0, right = arr.length -1){
     if(left < right){
         let pivotIndex = await pivotHelper(arr, left, right) //3
         //left
+        if (sizeHasChanged) return;
         await quickSort(arr,left,pivotIndex-1);
         //right
+        if (sizeHasChanged) return;
         await quickSort(arr,pivotIndex+1,right);
       }
      return arr;
 } 
 
-function quickSortHelper() {
+async function quickSortHelper() {
     const elements = document.querySelectorAll('.array-element');
     const arrayOfObject = createArrayOfObject(elements);
-    quickSort(arrayOfObject);
+    await quickSort(arrayOfObject);
 
 }
 
-const quickButton = document.querySelector('.quick');
-quickButton.addEventListener('click', quickSortHelper)
+
+
+quickButton.addEventListener("click", async function () {
+  const attr = document.createAttribute("highlight");
+  disableButtons(true);
+  addClickedAttribute(quickButton, attr);
+  await quickSortHelper();
+  disableButtons(false);
+  removeClickedAttribute(quickButton, attr);
+});
+
+function addClickedAttribute(button, attr) {
+  attr.value = "clicked";
+  button.setAttributeNode(attr);
+}
+
+function removeClickedAttribute(button, attr) {
+  button.removeAttributeNode(attr);
+}
